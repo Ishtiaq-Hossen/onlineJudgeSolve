@@ -1,0 +1,39 @@
+https://ideone.com/A73obG
+
+https://github.com/mohandsakr/my-problem-solving-solutions-on-codeforces.com/blob/master/988A.Diverse%20Team.cpp
+
+#include <iostream>
+#include <stack>
+using namespace std;
+using ll = long long int;
+ll countDuplicates(stack<ll> &p)
+{
+    if (!p.empty())
+    {
+        ll popped_element = p.top();
+        p.pop();
+        if (p.empty())
+        {
+            return 0;
+        }
+        else
+        {
+            return (popped_element == p.top()) + countDuplicates(p);
+        }
+    }
+    else
+    {
+        return 0;
+    }
+}
+int main()
+{
+    stack<ll>r;
+    for (ll i : {1, 3, 4, 7, 7, 7, 7, 9, 9, 11, 13, 14, 14, 14, 16, 16, 18, 19, 19, 19})
+    {
+        r.push(i);
+    }
+    cout << countDuplicates(r) << endl;
+}
+
+
